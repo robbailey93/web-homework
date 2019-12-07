@@ -8,7 +8,7 @@ function AppRouter () {
     <Router>
       <div css={layoutStyle}>
         <nav css={navStyle}>
-          <ul >
+          <ul>
             <li>
               <Link to='/'>Home</Link>
             </li>
@@ -19,7 +19,7 @@ function AppRouter () {
         </nav>
         <div className='main-content' css={contentStyle}>
           <Route component={Home} exact path='/' />
-          <Route component={() => (<div>Content for /another route</div>)} exact path='/another' />
+          <Route component={() => <div>Content for /another route</div>} exact path='/another' />
         </div>
       </div>
     </Router>
@@ -29,25 +29,42 @@ function AppRouter () {
 export default AppRouter
 
 const layoutStyle = css`
-    display: grid;
-    grid-row-gap: 24px;
-    padding: 8px;
+  display: grid;
+  grid-row-gap: 24px;
+  padding: 8px;
 `
 
 const navStyle = css`
   grid-row: 1;
 
   & > ul {
-      display: flex;
-      flex-direction: row;
-      list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    font-size: 44px;
   }
-  
+
   & > ul > li:not(:first-child) {
     margin-left: 16px;
+  }
+
+  & > ul > li {
+    padding: 32px;
+    background-color: hotpink;
+    font-size: 24px;
+    border-radius: 4px;
+  }
+
+  & > ul > li > a { 
+    color: green;
+    text-decoration: none;
+    
+    &:hover {
+      color: white;
+    }
   }
 `
 
 const contentStyle = css`
-  grid-row: 2;
+  grid-row: 2
 `

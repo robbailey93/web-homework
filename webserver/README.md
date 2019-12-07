@@ -12,6 +12,9 @@ You can also install **nodemon** globally for hot reloading
 
     sudo yarn add --global nodemon --prefix=/usr/local
 
+    <!-- ## the yarn install should be changed to: -->
+    <!-- yarn global add nodemon --prefix=/usr/local -->
+
 To run this server application with **nodemon** run 
 
     nodemon ./bin/app
