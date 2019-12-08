@@ -9,7 +9,7 @@ const path = require('path')
 const pino = require('pino')
 const pinoHttp = require('pino-http')
 
-module.exports = function main (options, cb) {
+module.exports = function main(options, cb) {
   // Set default options
   const ready = cb || function () { }
   const opts = Object.assign(
@@ -35,7 +35,7 @@ module.exports = function main (options, cb) {
   })
 
   // Setup error handling
-  function unhandledError (err) {
+  function unhandledError(err) {
     // Log the errors
     logger.error(err)
 
@@ -64,8 +64,12 @@ module.exports = function main (options, cb) {
   app.use(express.static(path.join(__dirname, 'public')))
 
   // Template engine
-  app.engine('html', ejs.renderFile)
-  app.set('views', path.join(__dirname, 'public'))
+ app.engine('html', ejs.renderFile)
+
+  // rb- Changed 'public' to 'views' to stop render errors
+  // app.set('views', path.join(__dirname, 'public'))
+  app.set('views', path.join(__dirname, 'views'))
+
   app.set('view engine', 'html')
 
   // Common middleware
@@ -95,10 +99,10 @@ module.exports = function main (options, cb) {
   app.use(bodyParser)
 
   // Common error handlers
-  app.use(function fourOhFourHandler (req, res, next) {
+  app.use(function fourOhFourHandler(req, res, next) {
     next(httpErrors(404, `Route not found: ${req.url}`))
   })
-  app.use(function fiveHundredHandler (err, req, res, next) { // eslint-disable-line no-unused-vars
+  app.use(function fiveHundredHandler(err, req, res, next) { // eslint-disable-line no-unused-vars
     if (err.status >= 500) {
       logger.error(err)
     }
