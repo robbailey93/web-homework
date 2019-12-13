@@ -61,16 +61,17 @@ module.exports = function main(options, cb) {
   // Create the express app
   const app = express()
 
-  app.use(express.static(path.join(__dirname, 'public')))
+  app.use(express.static(path.join(__dirname, 'views')))
 
   // Template engine
- app.engine('html', ejs.renderFile)
+  app.engine('ejs', ejs.renderFile)
 
   // rb- Changed 'public' to 'views' to stop render errors
   // app.set('views', path.join(__dirname, 'public'))
+
   app.set('views', path.join(__dirname, 'views'))
 
-  app.set('view engine', 'html')
+  app.set('view engine', 'ejs')
 
   // Common middleware
   // app.use(/* ... */)

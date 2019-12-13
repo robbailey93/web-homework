@@ -21,6 +21,7 @@ module.exports = function (app, opts) {
   )
 
   app.use(/(?!\/graphql)/, (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'))
+    // rb- changed public to views
+    res.sendFile(path.join(__dirname, 'views', 'index.html'))
   })
 }

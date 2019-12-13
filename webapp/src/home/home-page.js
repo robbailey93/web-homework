@@ -1,18 +1,31 @@
-import React, { Fragment } from 'react'
-
-import TopNavbar from '../components/TopNavbar'
+import React from 'react'
+// import { BrowserRouter as Route } from 'react-router-dom'
+// import { css } from '@emotion/core'
 import UserList from '../components/UserList'
+// import TopNavbar from '../components/TopNavbar'
 
-export function Home () {
+// query {
+//   transactions {
+//     id
+//     user_id
+//     description
+//     merchant_id
+//     debit
+//     credit
+//     amount
+//   }
+// }
+
+
+export function Home() {
   return (
-    <Fragment>
-      <TopNavbar />
+    <>
       {/* <Link to="/another">Another route</Link> */}
       <div>Ready, steady, go!</div>
       <div>Ready, steady, go 2!</div>
       <div>Ready, steady, go 3!</div>
-
       <UserList />
-    </Fragment>
+      {/* <TopNavbar /> */}
+    </>
   )
 }

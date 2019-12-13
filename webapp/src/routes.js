@@ -1,39 +1,89 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import { css } from '@emotion/core'
+import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
+import { Global, css } from '@emotion/core'
 import { Home } from './home'
+// import TopNavbar from './components/TopNavbar'
 
-function AppRouter () {
+function AppRouter() {
   return (
-    <Router>
-      <div css={layoutStyle}>
-        <nav css={navStyle}>
-          <ul>
-            <li>
-              <Link to='/'>Home</Link>
-            </li>
-            <li>
-              <Link to='/another'>Another route</Link>
-            </li>
-          </ul>
-        </nav>
+    <>
+      <Router>
+        <div css={layoutStyle}>
+          <nav className='navbar fixed-top navbar-expand-lg navbar-light bg-light'>
+            <Link className='navbar-brand' to={'/'}>Divvy Homework App</Link>
+            <div
+              className='collapse navbar-collapse'
+              id='navbarSupportedContent'>
+              <div css={navStyle}>
+                <ul className='navbar-nav mr-auto'>
+                  <li className='nav-item'>
+                    <NavLink
+                      className='nav-link'
+                      exact
+                      to={'/'}>
+                      Home
+                    </NavLink>
+                  </li>
+                  <li className='nav-item'>
+                    <NavLink
+                      className='nav-link'
+                      to={'/another'}>
+                      Another route
+                    </NavLink>
+                  </li>
+                  <li className='nav-item'>
+                    <NavLink
+                      className='nav-link'
+                      to={'/create'}>
+                      Create
+                      </NavLink>
+                  </li>
+                  <li className='nav-item'>
+                    <NavLink
+                      className='nav-link'
+                      to={'/index-list'}>
+                      Index
+                      </NavLink>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
         <div className='main-content' css={contentStyle}>
           <Route component={Home} exact path='/' />
-          <Route component={() => <div>Content for /another route</div>} exact path='/another' />
+          <Route component={() => <div className='some-class'>Content for /another route</div>} exact path='/another' />
         </div>
-      </div>
-    </Router>
+      </Router>
+      <Global
+        styles={css`
+            .some-class {
+              color: hotpink !important;
+            }
+          `}
+      />
+      <Global
+        styles={{
+          '.some-class': {
+            fontSize: 50,
+            textAlign: 'center'
+          }
+        }}
+      />
+    </>
   )
 }
 
 export default AppRouter
 
+const contentStyle = css`
+  grid-row: 2
+`
 const layoutStyle = css`
   display: grid;
   grid-row-gap: 24px;
   padding: 8px;
 `
-
 const navStyle = css`
   grid-row: 1;
 
@@ -50,7 +100,7 @@ const navStyle = css`
 
   & > ul > li {
     padding: 32px;
-    background-color: hotpink;
+    background-color: yellow;
     font-size: 24px;
     border-radius: 4px;
   }
@@ -63,8 +113,4 @@ const navStyle = css`
       color: white;
     }
   }
-`
-
-const contentStyle = css`
-  grid-row: 2
 `

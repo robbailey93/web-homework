@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom'
 import AppRouter from './routes'
 import { ApolloProvider } from 'react-apollo'
 import { client } from './network/apollo-client'
-
-// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css'
 
 ReactDOM.render(
   (

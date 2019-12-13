@@ -32,13 +32,13 @@ const imageUrlConfig = {
   use: 'url-loader?limit=25000'
 }
 
-const eslintConfig = {
-  test: JS_FILE_REGEX,
-  use: 'eslint-loader',
-  enforce: 'pre',
-  // we want eslint to ignore @divvy/skylab
-  exclude: /\/node_modules\/(?!apollo-.*?|react-apollo)/
-}
+// const eslintConfig = {
+//   test: JS_FILE_REGEX,
+//   use: 'eslint-loader',
+//   enforce: 'pre',
+//   // we want eslint to ignore @divvy/skylab
+//   exclude: /\/node_modules\/(?!apollo-.*?|react-apollo)/
+// }
 
 const graphQlConfig = {
   test: GRAPH_QL_FILE_REGEX,
@@ -48,7 +48,7 @@ const graphQlConfig = {
 
 const rules = [
   babelConfig,
-  eslintConfig,
+  // eslintConfig,
   imageUrlConfig,
   {
     test: /\.mjs$/,
